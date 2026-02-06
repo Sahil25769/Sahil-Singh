@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Love by Sahil ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#ff4d6d,#ff8fab);
+height:100vh;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.page{
+display:none;
+background:white;
+padding:25px;
+border-radius:25px;
+width:90%;
+max-width:380px;
+text-align:center;
+box-shadow:0 10px 40px rgba(0,0,0,.3);
+}
+
+.show{display:block}
+
+button{
+border:none;
+padding:12px 25px;
+border-radius:30px;
+background:#ff4d6d;
+color:white;
+font-size:16px;
+margin:10px;
+cursor:pointer;
+}
+
+#no{
+background:#777;
+position:absolute;
+}
+
+img{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+margin:10px 0;
+border:3px solid #ff4d6d;
+}
+
+.heart{
+position:fixed;
+animation:fall 4s linear;
+}
+
+@keyframes fall{
+to{transform:translateY(110vh)}
+}
+
+.cert{
+border:3px dashed #ff4d6d;
+padding:20px;
+border-radius:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page show" id="p1">
+<h2>Sanya ❤️</h2>
+
+<!-- PHOTO -->
+<img src="photo.jpeg">
+
+<p id="type"></p>
+
+<button onclick="next(2)">Next ➡</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+<h2>Will You Be Mine Forever? 💍</h2>
+<button onclick="yes()">YES ❤️</button>
+<button id="no" onmouseover="move()">NO 😅</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3">
+<div class="cert">
+<h2>💖 Love Certificate 💖</h2>
+<p>This certifies that</p>
+<h3>Sanya ❤️ Sahil</h3>
+<p>are officially in love forever.</p>
+
+<p>You are my favorite notification every day.</p>
+
+<h4>From Sahil 💕</h4>
+
+<button onclick="location.reload()">Restart 🔁</button>
+</div>
+</div>
+
+<script>
+
+let text="You make my world brighter every day.\nI smile whenever I think of you.\n\nFrom Sahil ❤️";
+let i=0;
+
+function typing(){
+if(i<text.length){
+type.innerHTML+=text[i]=="\n"?"<br>":text[i];
+i++;
+setTimeout(typing,50);
+}
+}
+typing();
+
+function next(n){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));
+document.getElementById("p"+n).classList.add("show");
+}
+
+function move(){
+no.style.left=Math.random()*70+"%";
+no.style.top=Math.random()*70+"%";
+}
+
+function yes(){
+next(3);
+for(let i=0;i<40;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.top="-10px";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),4000);
+}
+}
+
+</script>
+
+</body>
+</html>
